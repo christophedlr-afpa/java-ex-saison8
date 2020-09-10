@@ -1,0 +1,53 @@
+ALGORITHM ex-8.7
+
+    VARIABLES
+        x: numérique = 0
+        y: numérique = 0
+        move: numérique
+        checkerBoard(7,7): numérique
+
+    DEBUT
+        ECRIRE "Indiquez une ligne où vous positionner : "
+        LIRE x
+
+        ECRIRE "Indiquez une colonne où vous positionner : "
+        LIRE y
+
+        SI (x est inférieur à 0 OU x supérieur à 7) ET (y est inférieur à 0 OU y supérieur à 7) ALORS
+            ECRIRE "Position invalide"
+        SINON
+            TANTQUE est VRAI
+                ECRIRE "Indiquez le mouvement (0 => haut-gauche, 1 => haut-droite, 2 => bas-gauche, 3 => bas-droite) : "
+                LIRE move
+
+                SI move est égale à 0 ET ( (x-1 inférieur ou égale à 8 ET x-1 est supérieur ou égale à 0) ET (y-1 est supérieur ou égale à 0 ET y-1 est inférieur ou égale à 8) ) ALORS
+                    checkerBoard(x)(y) = 0
+                    x = x-1
+                    y = y-1
+                    checkerBoard(x)(y) = 1
+                SINON SI move est égale à 1 ET ( (x-1 inférieur ou égale à 8 ET x-1 est supérieur ou égale à 0) ET (y+1 est inférieur ou égale à 8 ET y+1 est supérieur ou égale à 0) ) ALORS
+                    checkerBoard(x)(y) = 0
+                    x = x-1
+                    y = y+1
+                    checkerBoard(x)(y) = 1
+                SINON SI move est égale à 2 ET ( (x+1 est supérieur ou égale à 0 ET x+1 inférieur ou égale à 8) ET (y-1 est supérieur ou égale à 0 ET y-1 est inférieur ou égale à 8) ) ALORS
+                    checkerBoard(x)(y) = 0
+                    x = x+1
+                    y = y-1
+                    checkerBoard(x)(y) = 1
+                SINON SI move est égale à 3 ET ( (x+1 est supérieur ou égale à 0 ET x+1 inférieur ou égale à 8) ET (y+1 est inférieur ou égale à 8 ET y+1 est supérieur ou égale à 0) ) ALORS
+                    checkerBoard(x)(y) = 0
+                    x = x+1
+                    y = y+1
+                    checkerBoard(x)(y) = 1
+                SINON
+                    ECRIRE "Déplacement impossible"
+                    INTERRUPTION
+                FIN SI
+
+                DESSINER le plateau
+            FIN TANTQUE
+        FIN SI
+    FIN
+
+FIN ex-8.7
